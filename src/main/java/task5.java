@@ -1,3 +1,4 @@
+import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -9,13 +10,12 @@ public class task5 {
     // JAVA PROCESS <------[OS]-------> FILE
 
     public static void main(String[] args) throws IOException {
-        // FileOutputStream поток записи в файл
-        FileOutputStream fileOutputStream = new FileOutputStream("file.txt");
+        // BufferedOutputStream буферизированный поток записи в файл
+        BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream("file.txt"));
 
         String text = "My text";
         byte[] bytes = text.getBytes(StandardCharsets.UTF_8); // строку text преобразуем в массива байт
-        fileOutputStream.write(bytes); // запись в файл созданный массив байт
-
-        fileOutputStream.close(); // закрытие ресурса, в данном случае file.txt
+        os.write(bytes); // накапливает данные в буфере
+        os.flush(); // записывает накопленные данные из буфера в файл
     }
 }
