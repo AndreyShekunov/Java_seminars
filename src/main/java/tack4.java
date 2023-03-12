@@ -22,5 +22,6 @@ public class tack4 {
             }
             System.out.println();
         }
+        System.out.println(Arrays.deepToString(array)); // выриант вывода массива массивов
     }
 }
