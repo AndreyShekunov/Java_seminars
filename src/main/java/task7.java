@@ -12,16 +12,17 @@ public class task7 {
     // метод, который сжимает строку:
     // например: aaaabbbcdd -> a4b3cd2
     static String compress(String input) {
-        String result = ""; // переменная для результата
-        int count = 1;  // счетчки для подсчета повторяющихся символов
-        char tmp = input.charAt(0); // первый символ в строке для сравнения
-        for (int i = 1; i < input.length(); i++) {
-            char c = input.charAt(i); // получаем символ строки
+        String result = "";
+        int count = 1;
+        char[] chars = input.toCharArray(); // создаем массив символов
+        char tmp = chars[0];  // берем первый элемент массива
+        for (int i = 1; i < chars.length; i++) {
+            char c = chars[i];
             if (tmp == c) {
                 count++;
             } else {
                 if (count > 1) {
-                    result += String.valueOf(tmp) + count; // к результату добавляем символ, конвертирова его в строку и количество повторений этого символа в строке
+                    result += String.valueOf(tmp) + count;
                 } else {
                     result += tmp;
                 }
